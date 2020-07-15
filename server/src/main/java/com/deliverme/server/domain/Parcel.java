@@ -26,6 +26,10 @@ public class Parcel {
     private int status;
     @NotNull(message = "Qty is required")
     private int qty;
+    @NotNull(message = "Receiver information is required ")
+    private String receiverInfo;
+    @NotNull(message = "Description is required")
+    private String description;
 
     private String parcelOwner;
 
@@ -42,7 +46,6 @@ public class Parcel {
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
     private Driver driver;
-
 
 
     public Parcel() {
@@ -113,6 +116,22 @@ public class Parcel {
         this.updated_At = updated_At;
     }
 
+    public String getReceiverInfo() {
+        return receiverInfo;
+    }
+
+    public void setReceiverInfo(String receiverInfo) {
+        this.receiverInfo = receiverInfo;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public String getParcelOwner() {
         return parcelOwner;
     }
@@ -139,14 +158,13 @@ public class Parcel {
     }
 
 
-
     @PrePersist
-    protected void onCreate(){
+    protected void onCreate() {
         this.created_At = new Date();
     }
 
     @PreUpdate
-    protected void onUpdate(){
+    protected void onUpdate() {
         this.updated_At = new Date();
     }
 

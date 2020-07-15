@@ -31,6 +31,9 @@ public class Customer implements UserDetails {
     @NotBlank(message = "please enter your password")
     private String password;
 
+    @NotBlank(message = "please enter your mobile number")
+    private String mobile;
+
     @Transient
     private String confirmPassword;
 
@@ -110,6 +113,14 @@ public class Customer implements UserDetails {
 
     public void setUpdated_At(Date updated_At) {
         this.updated_At = updated_At;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
     public List<Parcel> getParcels() {

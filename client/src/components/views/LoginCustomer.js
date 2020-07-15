@@ -19,6 +19,7 @@ export class LoginCustomer extends Component {
 
   onSignUp = (newCustomer) => {
     _.assign(newCustomer, { type: 'customer' });
+
     this.props.customerSignUp(newCustomer);
   };
 

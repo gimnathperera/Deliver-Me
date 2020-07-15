@@ -28,6 +28,8 @@ export class UpdateBookingForm extends Component {
       location: formValues.location,
       destination: formValues.destination,
       weight: convertedWeight,
+      description: formValues.description,
+      receiverInfo: formValues.receiverInfo,
       status: 1,
       qty: 1
     };
@@ -81,12 +83,29 @@ export class UpdateBookingForm extends Component {
         </div>
         <div className='form-group row'>
           <Field
+            name='description'
+            type='text'
+            component={this.renderField}
+            label='Description: '
+          />
+        </div>
+        <div className='form-group row'>
+          <Field
+            name='receiverInfo'
+            type='text'
+            component={this.renderField}
+            label='Receiver Info: '
+          />
+        </div>
+        <div className='form-group row'>
+          <Field
             name='weight'
             type='number'
             component={this.renderField}
             label='Weight(kg): '
           />
         </div>
+
         <div class='ant-modal-footer' style={{ marginTop: 10 }}>
           <div>
             <button type='button' class='ant-btn' onClick={this.onCancel}>
@@ -110,6 +129,12 @@ const validate = (values) => {
   }
   if (!values.destination) {
     errors.destination = 'Required';
+  }
+  if (!values.description) {
+    errors.description = 'Required';
+  }
+  if (!values.receiverInfo) {
+    errors.receiverInfo = 'Required';
   }
   if (!values.weight) {
     errors.weight = 'Required';

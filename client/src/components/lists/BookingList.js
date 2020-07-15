@@ -56,7 +56,9 @@ export class BookingList extends Component {
     let prevData = {
       location: booking.location,
       destination: booking.destination,
-      weight: parseInt(booking.weight, 10)
+      weight: parseInt(booking.weight, 10),
+      description: booking.description,
+      receiverInfo: booking.receiverInfo
     };
 
     this.setState({

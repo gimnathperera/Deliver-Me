@@ -57,7 +57,13 @@ export class SignupFormCustomer extends Component {
           label='Your Email'
           icon='fa fa-envelope'
         />
-
+        <Field
+          name='mobile'
+          type='text'
+          component={this.renderField}
+          label='Your Mobile Number'
+          icon='fa fa-phone'
+        />
         <Field
           name='password'
           type='password'
@@ -116,6 +122,9 @@ const validate = (values) => {
   }
   if (!values.fullName) {
     errors.fullName = 'Required';
+  }
+  if (!values.mobile) {
+    errors.mobile = 'Required';
   }
   if (!values.confirmPassword) {
     errors.confirmPassword = 'Required';

@@ -30,6 +30,9 @@ public class Driver implements UserDetails {
     @NotBlank(message = "please enter your password")
     private String password;
 
+    @NotBlank(message = "please enter your mobile number")
+    private String mobile;
+
     @Transient
     private String confirmPassword;
 
@@ -94,6 +97,14 @@ public class Driver implements UserDetails {
 
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
     public Date getCreated_At() {

@@ -46,6 +46,8 @@ export class AddBookingForm extends Component {
       location: formValues.location,
       destination: formValues.destination,
       weight: convertedWeight,
+      description: formValues.description,
+      receiverInfo: formValues.receiverInfo,
       status: 1,
       qty: 1
     };
@@ -62,7 +64,7 @@ export class AddBookingForm extends Component {
             name='location'
             type='text'
             component={this.renderField}
-            label='From: '
+            label='Location: '
           />
         </div>
         <div className='form-group row'>
@@ -70,7 +72,23 @@ export class AddBookingForm extends Component {
             name='destination'
             type='text'
             component={this.renderField}
-            label='To: '
+            label='Destination: '
+          />
+        </div>
+        <div className='form-group row'>
+          <Field
+            name='description'
+            type='text'
+            component={this.renderField}
+            label='Description: '
+          />
+        </div>
+        <div className='form-group row'>
+          <Field
+            name='receiverInfo'
+            type='text'
+            component={this.renderField}
+            label='Receiver Info: '
           />
         </div>
         <div className='form-group row'>
@@ -104,6 +122,12 @@ const validate = (values) => {
   }
   if (!values.destination) {
     errors.destination = 'Required';
+  }
+  if (!values.description) {
+    errors.description = 'Required';
+  }
+  if (!values.receiverInfo) {
+    errors.receiverInfo = 'Required';
   }
   if (!values.weight) {
     errors.weight = 'Required';
