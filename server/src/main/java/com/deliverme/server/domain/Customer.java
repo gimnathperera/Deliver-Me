@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -39,6 +40,9 @@ public class Customer implements UserDetails {
 
     @NotBlank(message = "type is required")
     private String type;
+
+    @NotNull(message = "status is required")
+    private int status;
 
     private Date created_At;
     private Date updated_At;
@@ -117,6 +121,14 @@ public class Customer implements UserDetails {
 
     public String getMobile() {
         return mobile;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public void setMobile(String mobile) {

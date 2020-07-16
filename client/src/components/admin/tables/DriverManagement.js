@@ -9,14 +9,19 @@ import {
   ExclamationCircleOutlined
 } from '@ant-design/icons';
 
-import { fetchDrivers, deleteDriver } from '../../../actions/driver';
+import {
+  fetchDrivers,
+  deleteDriver,
+  statusChange
+} from '../../../actions/driver';
+import AddDriverForm from '../../forms/AddDriverForm';
 import SideNavigation from '../SideNavigation';
 import AdminHeader from '../AdminHeader';
 import '../../../assets/css/sb-admin-2.css';
 import '../../../assets/css/sb-admin-2.min.css';
 
 export class DriverManagement extends Component {
-  state = { visible: false, parcels: [] };
+  state = { visible: false, visibleModal: false, parcels: [] };
 
   componentDidMount() {
     this.props.fetchDrivers();
@@ -44,20 +49,30 @@ export class DriverManagement extends Component {
       visible: true
     });
   };
+  showModalCreate = () => {
+    this.setState({
+      visibleModal: true
+    });
+  };
 
   handleOk = (e) => {
-    console.log(e);
     this.setState({
       visible: false
     });
   };
 
   handleCancel = (e) => {
-    console.log(e);
     this.setState({
       visible: false
     });
   };
+
+  onCancel = (e) => {
+    this.setState({
+      visibleModal: false
+    });
+  };
+
   modalContent = () => {
     return (
       this.state.parcels &&
@@ -72,19 +87,63 @@ export class DriverManagement extends Component {
       })
     );
   };
+  onChangeStatus = (status, id) => {
+    this.props.statusChange(id, status);
+  };
+  renderStatusList = (status, id) => {
+    let allStatus = ['Normal', 'Black Listed'];
+    return (
+      <Tooltip title='change status'>
+        <select
+          className='form-control form-control-sm'
+          defaultValue={status}
+          onChange={(e) => {
+            this.onChangeStatus(e.target.value, id);
+          }}
+        >
+          {allStatus.map((sts, index) => {
+            return (
+              <option id={id} key={index} value={index + 1}>
+                {sts}
+              </option>
+            );
+          })}
+        </select>
+      </Tooltip>
+    );
+  };
+
   renderDriver = () => {
     const { drivers } = this.props;
+    let status;
 
     if (drivers.length !== 0) {
       return (
         drivers &&
         drivers.map((driver, index) => {
+          if (driver.status === 1) {
+            status = {
+              status: 'Normal',
+              cn: 'badge badge-info'
+            };
+          }
+          if (driver.status === 2) {
+            status = {
+              status: 'Black Listed',
+              cn: 'badge badge-danger'
+            };
+          }
           return (
             <tr key={index}>
               <td>{driver.fullName}</td>
               <td>{driver.username}</td>
+              <td>{driver.mobile}</td>
               <td>{moment(driver.created_At).format('YYYY-MM-DD HH:mm')}</td>
-              <td>Active</td>
+              <td style={{ textAlign: 'center' }}>
+                <span className={`${status.cn}`}>
+                  {this.renderStatusList(driver.status, driver.id)}
+                </span>
+              </td>
               <td style={{ textAlign: 'center' }}>
                 <Tooltip title='view deliveris'>
                   <Button
@@ -131,6 +190,15 @@ export class DriverManagement extends Component {
             <div className='container-fluid'>
               <div className='d-sm-flex align-items-center justify-content-between mb-4'>
                 <h1 className='h3 mb-0 text-gray-800'>Driver Management</h1>
+                <a
+                  href='#'
+                  className='btn btn-primary'
+                  style={{ background: '#007bff', padding: '10px 5px' }}
+                  onClick={this.showModalCreate}
+                >
+                  <i className='fa fa-plus' aria-hidden='true'></i> Create a
+                  driver
+                </a>
               </div>
 
               <div className='row'>
@@ -142,6 +210,7 @@ export class DriverManagement extends Component {
                           <tr>
                             <th scope='col'>Full name</th>
                             <th scope='col'>Email</th>
+                            <th scope='col'>Mobile Number</th>
                             <th scope='col'>Joined Date</th>
                             <th scope='col'>Status</th>
                             <th scope='col'>Action</th>
@@ -173,6 +242,14 @@ export class DriverManagement extends Component {
               <tbody> {this.modalContent()}</tbody>
             </table>
           </Modal>
+          <Modal
+            title='Create a new driver'
+            visible={this.state.visibleModal}
+            footer={false}
+            onCancel={this.onCancel}
+          >
+            <AddDriverForm onCancel={this.onCancel} />
+          </Modal>
         </div>
       </div>
     );
@@ -183,6 +260,8 @@ const mapStateToProps = (state) => {
   return { drivers: Object.values(state.drivers) };
 };
 
-export default connect(mapStateToProps, { fetchDrivers, deleteDriver })(
-  DriverManagement
-);
+export default connect(mapStateToProps, {
+  fetchDrivers,
+  deleteDriver,
+  statusChange
+})(DriverManagement);
