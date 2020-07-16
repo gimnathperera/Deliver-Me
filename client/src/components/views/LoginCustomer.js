@@ -18,7 +18,7 @@ export class LoginCustomer extends Component {
   setVisible = () => {};
 
   onSignUp = (newCustomer) => {
-    _.assign(newCustomer, { type: 'customer' });
+    _.assign(newCustomer, { type: 'customer', status: 1 });
 
     this.props.customerSignUp(newCustomer);
   };

@@ -8,7 +8,11 @@ import {
   ExclamationCircleOutlined
 } from '@ant-design/icons';
 
-import { fetchCustomers, deleteCustomer } from '../../../actions/customer';
+import {
+  fetchCustomers,
+  deleteCustomer,
+  statusChange
+} from '../../../actions/customer';
 import SideNavigation from '../SideNavigation';
 import AdminHeader from '../AdminHeader';
 import '../../../assets/css/sb-admin-2.css';
@@ -41,6 +45,7 @@ export class CustomerManagement extends Component {
       visible: false
     });
   };
+
   onDeleteClick = (id) => {
     const { confirm } = Modal;
     confirm({
@@ -58,19 +63,65 @@ export class CustomerManagement extends Component {
     });
   };
 
+  onChangeStatus = (status, id) => {
+    this.props.statusChange(id, status);
+  };
+
+  renderStatusList = (status, id) => {
+    let allStatus = ['Normal', 'Black Listed'];
+    return (
+      <Tooltip title='change status'>
+        <select
+          className='form-control form-control-sm'
+          defaultValue={status}
+          onChange={(e) => {
+            this.onChangeStatus(e.target.value, id);
+          }}
+        >
+          {allStatus.map((sts, index) => {
+            return (
+              <option id={id} key={index} value={index + 1}>
+                {sts}
+              </option>
+            );
+          })}
+        </select>
+      </Tooltip>
+    );
+  };
+
   renderCustomer = () => {
     const { customers } = this.props;
 
+    let status;
     if (customers.length !== 0) {
       return (
         customers &&
         customers.map((customer, index) => {
+          if (customer.status === 1) {
+            status = {
+              status: 'Normal',
+              cn: 'badge badge-info'
+            };
+          }
+          if (customer.status === 2) {
+            status = {
+              status: 'Black Listed',
+              cn: 'badge badge-danger'
+            };
+          }
+
           return (
             <tr key={index}>
               <td>{customer.fullName}</td>
               <td>{customer.username}</td>
+              <td>{customer.mobile}</td>
               <td>{moment(customer.created_At).format('YYYY-MM-DD HH:mm')}</td>
-              <td>Active</td>
+              <td style={{ textAlign: 'center' }}>
+                <span className={`${status.cn}`}>
+                  {this.renderStatusList(customer.status, customer.id)}
+                </span>
+              </td>
               <td style={{ textAlign: 'center' }}>
                 <Tooltip title='view parcels'>
                   <Button
@@ -144,6 +195,7 @@ export class CustomerManagement extends Component {
                           <tr>
                             <th scope='col'>Full name</th>
                             <th scope='col'>Email</th>
+                            <th scope='col'>Mobile Number</th>
                             <th scope='col'>Joined Date</th>
                             <th scope='col'>Status</th>
                             <th scope='col'>Action</th>
@@ -185,6 +237,8 @@ const mapStateToProps = (state) => {
   return { customers: Object.values(state.customers) };
 };
 
-export default connect(mapStateToProps, { fetchCustomers, deleteCustomer })(
-  CustomerManagement
-);
+export default connect(mapStateToProps, {
+  fetchCustomers,
+  deleteCustomer,
+  statusChange
+})(CustomerManagement);

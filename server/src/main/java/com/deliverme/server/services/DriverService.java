@@ -1,5 +1,6 @@
 package com.deliverme.server.services;
 
+import com.deliverme.server.domain.Customer;
 import com.deliverme.server.domain.Driver;
 import com.deliverme.server.exceptions.UserNotFoundException;
 import com.deliverme.server.exceptions.UsernameAlreadyExistsException;
@@ -61,6 +62,20 @@ public class DriverService {
         }
         return driver;
     }
+
+
+    public Driver updateDriverStatus(Long id, int status) {
+
+        Driver driver = findDriverById(id);
+        if (driver != null) {
+            driver.setStatus(status);
+            Driver updatedDriver = driverRepository.save(driver);
+            return updatedDriver;
+        } else {
+            return null;
+        }
+    }
+
 
     public void deleteDriverById(Long id){
         findDriverById(id);

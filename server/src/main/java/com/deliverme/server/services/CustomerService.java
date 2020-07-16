@@ -1,6 +1,8 @@
 package com.deliverme.server.services;
 
 import com.deliverme.server.domain.Customer;
+
+
 import com.deliverme.server.exceptions.UserNotFoundException;
 import com.deliverme.server.exceptions.UsernameAlreadyExistsException;
 import com.deliverme.server.repositories.CustomerRepository;
@@ -55,6 +57,18 @@ public class CustomerService {
     public void deleteCustomerById(Long id){
         Customer customer = findCustomerById(id);
         customerRepository.deleteById(id);
+    }
+
+    public Customer updateCustomerStatus(Long id, int status) {
+
+        Customer customer = findCustomerById(id);
+        if (customer != null) {
+            customer.setStatus(status);
+            Customer updatedCustomer = customerRepository.save(customer);
+            return updatedCustomer;
+        } else {
+            return null;
+        }
     }
 
 

@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -39,13 +40,15 @@ public class Driver implements UserDetails {
     @NotBlank(message = "type is required")
     private String type;
 
+    @NotNull(message = "status is required")
+    private int status;
+
     private Date created_At;
     private Date updated_At;
 
     //OneToMany with Parcel
     @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER, mappedBy = "driver", orphanRemoval = true)
     private List<Parcel> parcels = new ArrayList<>();
-
 
 
     public Driver() {
@@ -113,6 +116,14 @@ public class Driver implements UserDetails {
 
     public void setCreated_At(Date created_At) {
         this.created_At = created_At;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public Date getUpdated_At() {
