@@ -10,6 +10,7 @@
     "aos": "^2.3.4",
     "axios": "^0.19.2",
     "chart.js": "^2.9.3",
+    "emailjs-com": "^2.4.1",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",

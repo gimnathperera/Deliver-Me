@@ -98,10 +98,16 @@ export class AdminHeader extends Component {
                   <div className='status-indicator bg-success'></div>
                 </div>
                 <div className='font-weight-bold'>
-                  <div className='text-truncate'>Message content</div>
+                  <a
+                    href='https://mail.google.com/mail/u/3/?tab=wm&ogbl#inbox'
+                    className='text-truncate'
+                    style={{ color: '#5A6069' }}
+                  >
+                    Check Message
+                  </a>
 
                   <div className='small text-gray-500'>
-                    <span>Gimnath</span>
+                    <span>Gmail</span>
                   </div>
                 </div>
               </div>

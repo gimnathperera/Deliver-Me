@@ -1,6 +1,7 @@
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
 import { toastr } from 'react-redux-toastr';
+import emailjs from 'emailjs-com';
 
 import {
   SET_CURRENT_CUSTOMER,
@@ -9,6 +10,12 @@ import {
   SET_CURRENT_ADMIN
 } from './types';
 import setJWTToken from '../security/setJWT';
+
+const mailData = {
+  SERVICE_ID: 'gmail',
+  USER_ID: 'user_6ERnjkuHObxLGaTSy2okE',
+  TEMPLATE_ID: 'template_zFL7Vf5z'
+};
 
 export const customerSignUp = (newCustomer) => async (dispatch) => {
   try {
@@ -130,5 +137,30 @@ export const driverSignIn = (credentials) => async (dispatch) => {
     console.log(err.response.data);
     // toastr.error('Error', 'Invalid credentials');
     dispatch({ type: SET_ERRORS, payload: err.response.data });
+  }
+};
+
+export const sendEmail = (data) => async (dispatch) => {
+  console.log('sendEmail -> data', data);
+  try {
+    var template_params = {
+      reply_to: 'Admin',
+      from_name: data.fullName,
+      to_name: data.username,
+      message_html: `<p>${data.message}</p>`
+    };
+    const response = await emailjs.send(
+      mailData.SERVICE_ID,
+      mailData.TEMPLATE_ID,
+      template_params,
+      mailData.USER_ID
+    );
+    if (response) {
+      toastr.success('Success', 'Your feedback has been recorded, Thank you!');
+      window.location.href = '/';
+    }
+  } catch (err) {
+    console.log(err.message);
+    toastr.error('Error', 'Server error');
   }
 };
