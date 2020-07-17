@@ -124,6 +124,8 @@ export class CompletedBookings extends Component {
               <td>{booking.id}</td>
               <td>{booking.location}</td>
               <td>{booking.destination}</td>
+              <td>{booking.receiverInfo}</td>
+              <td>{booking.description}</td>
               <td>{booking.weight}</td>
               <td>{moment(created_date).format('YYYY-MM-DD HH:mm')}</td>
               <td style={{ textAlign: 'center' }}>
@@ -159,6 +161,8 @@ export class CompletedBookings extends Component {
             <th scope='col'>Parcel ID</th>
             <th scope='col'>Location</th>
             <th scope='col'>Destination</th>
+            <th scope='col'>Reciever Info</th>
+            <th scope='col'>Description</th>
             <th scope='col'>Weight</th>
             <th scope='col'>Booked Date</th>
             <th scope='col'>Status</th>

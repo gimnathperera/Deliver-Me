@@ -463,7 +463,7 @@ export class Home extends Component {
                   </div>
                   <div class='col-xl-5 col-lg-3 col-md-12'>
                     <div class='wantToWork-btn f-right'>
-                      <a href='#' class='btn btn-ans'>
+                      <a onClick={this.showModal} class='btn btn-ans'>
                         Contact Us
                       </a>
                     </div>
