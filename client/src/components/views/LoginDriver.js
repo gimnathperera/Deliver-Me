@@ -18,7 +18,7 @@ export class LoginDriver extends Component {
   setVisible = () => {};
 
   onSignUp = (newDriver) => {
-    _.assign(newDriver, { type: 'driver' });
+    _.assign(newDriver, { type: 'driver', status: 1 });
     this.props.driverSignUp(newDriver);
   };
 
