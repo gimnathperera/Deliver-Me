@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import OwlCarousel from 'react-owl-carousel';
-import { BackTop } from 'antd';
+import { BackTop, Modal } from 'antd';
 import AOS from 'aos';
 
 import h1_hero from '../assets/img/hero/h1_hero.png';
@@ -8,9 +8,30 @@ import testimonial from '../assets/img/testmonial/testimonial.png';
 import testimonial2 from '../assets/img/testmonial/testimonial2.png';
 import testimonial3 from '../assets/img/testmonial/testimonial3.png';
 import have from '../assets/img/team/have.jpg';
-
+import ContactUsForm from './forms/ContactUsForm';
 import Footer from './Footer';
+
 export class Home extends Component {
+  state = {
+    visible: false
+  };
+  showModal = (parcels) => {
+    this.setState({
+      parcels: parcels,
+      visible: true
+    });
+  };
+  handleOk = (e) => {
+    this.setState({
+      visible: false
+    });
+  };
+
+  handleCancel = (e) => {
+    this.setState({
+      visible: false
+    });
+  };
   render() {
     AOS.init({ duration: 2000, delay: 200 });
     return (
@@ -248,7 +269,11 @@ export class Home extends Component {
                       then track and manage the package as it's in transit.
                     </p>
 
-                    <a href='#' class='btn hvr-grow '>
+                    <a
+                      class='btn hvr-grow '
+                      onClick={this.showModal}
+                      style={{ color: 'white' }}
+                    >
                       Contact Us
                     </a>
                   </div>
@@ -438,7 +463,7 @@ export class Home extends Component {
                   </div>
                   <div class='col-xl-5 col-lg-3 col-md-12'>
                     <div class='wantToWork-btn f-right'>
-                      <a href='#' class='btn btn-ans'>
+                      <a onClick={this.showModal} class='btn btn-ans'>
                         Contact Us
                       </a>
                     </div>
@@ -447,6 +472,15 @@ export class Home extends Component {
               </div>
             </div>
           </div>
+          <Modal
+            title='Keep In Thouch With Us'
+            visible={this.state.visible}
+            onOk={this.handleOk}
+            onCancel={this.handleCancel}
+            footer={false}
+          >
+            <ContactUsForm onCancel={this.handleCancel} />
+          </Modal>
         </div>
         <Footer />
       </div>

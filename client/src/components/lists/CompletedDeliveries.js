@@ -76,6 +76,8 @@ export class CompletedDeliveries extends Component {
               <td>{delivery.id}</td>
               <td>{delivery.location}</td>
               <td>{delivery.destination}</td>
+              <td>{delivery.parcelOwner}</td>
+              <td>{delivery.receiverInfo}</td>
               <td>{delivery.weight}</td>
               <td>{moment(created_date).format('YYYY-MM-DD HH:mm')}</td>
               <td style={{ textAlign: 'center' }}>
@@ -106,6 +108,8 @@ export class CompletedDeliveries extends Component {
             <th scope='col'>Parcel ID</th>
             <th scope='col'>Location</th>
             <th scope='col'>Destination</th>
+            <th scope='col'>Owner</th>
+            <th scope='col'>Reciver info</th>
             <th scope='col'>Weight</th>
             <th scope='col'>Booked Date</th>
             <th scope='col'>Status</th>
