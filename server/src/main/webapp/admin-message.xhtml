@@ -1,0 +1,90 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns = "http://www.w3.org/1999/xhtml"
+      xmlns:h = "http://java.sun.com/jsf/html"
+      xmlns:f = "http://java.sun.com/jsf/core">
+
+<h:head>
+    <title>Deliver Me</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/util.css" />
+    <link rel="stylesheet" href="css/hover-min.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/slick.css" />
+    <link rel="stylesheet" href="css/slicknav.css" />
+    <link rel="stylesheet" href="css/style.css" />
+
+</h:head>
+
+<h:body>
+    <header>
+        <div class='header-area header-transparrent '>
+            <div class='main-header header-sticky'>
+                    <div class='row' style="margin-left:200px">
+                        <div class='col-xl-2 col-lg-2 col-md-1'>
+                            <div  class='logo'>
+                                <a href="/">
+                                    <img src='images/logo.png' width="200px" alt='' />
+                                </a>
+                            </div>
+                        </div>
+                        <div class='col-xl-8 col-lg-8 col-md-8'>
+                            <div class='main-menu f-right d-none d-lg-block'>
+                                <nav>
+                                    <ul id='navigation'>
+                                        <li class='hvr-grow'>
+                                            <a href='http://localhost:3000/admin-dashboard'>Home</a>
+                                        </li>
+                                        <li class='hvr-grow'>
+                                            <a href='#aboutus'>About Us</a>
+                                        </li>
+                                        <li class='hvr-grow'>
+                                            <a href='#service'>Services</a>
+                                        </li>
+                                        <li class='hvr-grow'>
+                                            <a href='#contactus'>Contact</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container" >
+
+    <div class="card" style="margin-top:100px;">
+        <div class="card-body">
+    <h:form >
+        <h:dataTable value = "#{messageData.messages}" var = "message" class='table table-striped table-bordered' >
+
+            <h:column>
+                <f:facet name = "header">Message ID</f:facet>
+                #{message.id}
+            </h:column>
+
+            <h:column>
+                <f:facet name = "header">Sender Email</f:facet>
+                #{message.senderEmail}
+            </h:column>
+
+            <h:column>
+                <f:facet name = "header">Message</f:facet>
+                #{message.message}
+            </h:column>
+            <h:column>
+                <f:facet name = "header">Date</f:facet>
+                #{message.date}
+            </h:column>
+
+
+        </h:dataTable>
+    </h:form>
+    </div></div></div>
+</h:body>
+</html>

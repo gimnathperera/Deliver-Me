@@ -50,6 +50,15 @@ public class Driver implements UserDetails {
     @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER, mappedBy = "driver", orphanRemoval = true)
     private List<Parcel> parcels = new ArrayList<>();
 
+    public Driver(@Email(message = "username needs to be an email") @NotBlank(message = "username is required") String username, @NotBlank(message = "please enter your full name") String fullName, @NotBlank(message = "please enter your password") String password, @NotBlank(message = "please enter your mobile number") String mobile, String confirmPassword, @NotBlank(message = "type is required") String type, @NotNull(message = "status is required") int status) {
+        this.username = username;
+        this.fullName = fullName;
+        this.password = password;
+        this.mobile = mobile;
+        this.confirmPassword = confirmPassword;
+        this.type = type;
+        this.status = status;
+    }
 
     public Driver() {
     }
