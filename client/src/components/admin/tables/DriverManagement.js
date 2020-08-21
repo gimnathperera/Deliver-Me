@@ -79,9 +79,11 @@ export class DriverManagement extends Component {
       this.state.parcels.map((parcel, index) => {
         return (
           <tr key={index}>
+            <td>{parcel.id}</td>
             <td>{moment(parcel.created_At).format('YYYY-MM-DD HH:mm')}</td>
             <td>{parcel.location}</td>
             <td>{parcel.destination}</td>
+            <td>{parcel.weight}</td>
           </tr>
         );
       })
@@ -191,10 +193,9 @@ export class DriverManagement extends Component {
               <div className='d-sm-flex align-items-center justify-content-between mb-4'>
                 <h1 className='h3 mb-0 text-gray-800'>Driver Management</h1>
                 <a
-                  href='#'
+                  href='http://localhost:8080/admin-driver-form.xhtml'
                   className='btn btn-primary'
                   style={{ background: '#007bff', padding: '10px 5px' }}
-                  onClick={this.showModalCreate}
                 >
                   <i className='fa fa-plus' aria-hidden='true'></i> Create a
                   driver
@@ -234,9 +235,11 @@ export class DriverManagement extends Component {
             <table class='table table-striped table-bordered'>
               <thead>
                 <tr>
+                  <th scope='col'>ID</th>
                   <th scope='col'>Date</th>
                   <th scope='col'>Location</th>
                   <th scope='col'>Destination</th>
+                  <th scope='col'>Weight</th>
                 </tr>
               </thead>
               <tbody> {this.modalContent()}</tbody>

@@ -38,7 +38,6 @@ export class AdminHeader extends Component {
         >
           <i className='fa fa-bars'></i>
         </button>
-
         <Link
           className='d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 nav-link hvr-pulse-grow'
           to='/'
@@ -50,6 +49,17 @@ export class AdminHeader extends Component {
           </span>
           <span>Back to home</span>
         </Link>
+
+        <a
+          className='d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 nav-link hvr-pulse-grow'
+          href='http://localhost:8080/admin-email-form.xhtml'
+          style={{ cursor: 'pointer' }}
+        >
+          <span class='fa-stack fa-lg' style={{ color: '#364D59' }}>
+            <i class='fa fa-circle fa-stack-2x'></i>
+            <i class='fa fa-share fa-stack-1x fa-inverse'></i>
+          </span>
+        </a>
 
         <ul className='navbar-nav ml-auto'>
           <li className='nav-item dropdown no-arrow mx-1'>
@@ -97,11 +107,18 @@ export class AdminHeader extends Component {
                   />
                   <div className='status-indicator bg-success'></div>
                 </div>
+
                 <div className='font-weight-bold'>
-                  <div className='text-truncate'>Message content</div>
+                  <a
+                    href='http://localhost:8080/admin-message.xhtml'
+                    className='text-truncate'
+                    style={{ color: '#5A6069' }}
+                  >
+                    Check Message
+                  </a>
 
                   <div className='small text-gray-500'>
-                    <span>Gimnath</span>
+                    <span>Gmail</span>
                   </div>
                 </div>
               </div>

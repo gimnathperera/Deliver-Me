@@ -55,10 +55,9 @@ export class AdminDashboard extends Component {
               <div className='d-sm-flex align-items-center justify-content-between mb-4'>
                 <h1 className='h3 mb-0 text-gray-800'>Dashboard</h1>
                 <a
-                  href='#'
+                  href='http://localhost:8080/admin-report.xhtml'
                   className='btn btn-primary'
                   style={{ background: '#007bff', padding: '10px 5px' }}
-                  onClick={this.showModal}
                 >
                   <i className='fa fa-download' aria-hidden='true'></i> Generate
                   Report
