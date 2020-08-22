@@ -242,7 +242,11 @@ export class Header extends Component {
                         <li className='hvr-grow'>
                           <a href='#contactus'>Contact</a>
                         </li>
-
+                        <li className='hvr-grow'>
+                          <a href='http://localhost:8080/view-drivers.xhtml'>
+                            Dirvers
+                          </a>
+                        </li>
                         {this.state.isLoggedIn && this.state.isDriver ? (
                           <li className='hvr-grow'>
                             <a>Deliveries</a>

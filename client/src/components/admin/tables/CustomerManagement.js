@@ -162,9 +162,11 @@ export class CustomerManagement extends Component {
       this.state.parcels.map((parcel, index) => {
         return (
           <tr key={index}>
+            <td>{parcel.id}</td>
             <td>{moment(parcel.created_At).format('YYYY-MM-DD HH:mm')}</td>
             <td>{parcel.location}</td>
             <td>{parcel.destination}</td>
+            <td>{parcel.weight}</td>
           </tr>
         );
       })
@@ -220,9 +222,11 @@ export class CustomerManagement extends Component {
           <table class='table table-striped table-bordered'>
             <thead>
               <tr>
+                <th scope='col'>ID</th>
                 <th scope='col'>Date</th>
                 <th scope='col'>Location</th>
                 <th scope='col'>Destination</th>
+                <th scope='col'>Weight</th>
               </tr>
             </thead>
             <tbody> {this.modalContent()}</tbody>

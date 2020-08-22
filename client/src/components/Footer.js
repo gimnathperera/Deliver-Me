@@ -20,10 +20,10 @@ export default function Footer() {
                     <div class='footer-tittle'>
                       <div class='footer-pera'>
                         <p class='info1'>
-                          221B Baker Street, P.O Box 353 Park <br /> Road, USA -
-                          215431
+                          No: 388/5, Dekatana road,Nagas junction <br />
+                          Mandawala, Sri Lanka
                         </p>
-                        <p class='info2'>info@yourdomain.com</p>
+                        <p class='info2'>gimnathperera@gmail.com</p>
                       </div>
                     </div>
                     <div class='footer-social'>
@@ -35,9 +35,6 @@ export default function Footer() {
                       </a>
                       <a href='#'>
                         <i class='fas fa-globe'></i>
-                      </a>
-                      <a href='#'>
-                        <i class='fab fa-behance'></i>
                       </a>
                     </div>
                   </div>

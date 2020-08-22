@@ -271,7 +271,7 @@ export class Home extends Component {
 
                     <a
                       class='btn hvr-grow '
-                      onClick={this.showModal}
+                      href='http://localhost:8080/contact-us.xhtml'
                       style={{ color: 'white' }}
                     >
                       Contact Us
@@ -463,7 +463,12 @@ export class Home extends Component {
                   </div>
                   <div class='col-xl-5 col-lg-3 col-md-12'>
                     <div class='wantToWork-btn f-right'>
-                      <a onClick={this.showModal} class='btn btn-ans'>
+
+                      <a
+                        href='http://localhost:8080/contact-us.xhtml'
+                        class='btn btn-ans'
+                      >
+
                         Contact Us
                       </a>
                     </div>

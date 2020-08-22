@@ -1,0 +1,145 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <title>Deliver Me</title>
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css"/>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="css/util.css"/>
+    <link rel="stylesheet" href="css/hover-min.css"/>
+    <link rel="stylesheet" href="css/responsive.css"/>
+    <link rel="stylesheet" href="css/slick.css"/>
+    <link rel="stylesheet" href="css/slicknav.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+
+</h:head>
+
+<h:body>
+    <header>
+        <div class='header-area header-transparrent '>
+            <div class='main-header header-sticky'>
+                <div class='container'>
+                    <div class='row align-items-center' style="margin-right:-250px">
+                        <div class='col-xl-2 col-lg-2 col-md-1'>
+                            <div class='logo'>
+                                <a href="/">
+                                    <img src='images/logo.png' width="220px" alt=''/>
+                                </a>
+                            </div>
+                        </div>
+                        <div class='col-xl-8 col-lg-8 col-md-8'>
+                            <div class='main-menu f-right d-none d-lg-block'>
+                                <nav>
+                                    <ul id='navigation'>
+                                        <li class='hvr-grow'>
+                                            <a href='http://localhost:3000/' style="color:white">Home</a>
+                                        </li>
+                                        <li class='hvr-grow'>
+                                            <a href='http://localhost:3000/' style="color:white">About Us</a>
+                                        </li>
+                                        <li class='hvr-grow'>
+                                            <a href='http://localhost:3000/' style="color:white">Services</a>
+                                        </li>
+                                        <li class='hvr-grow'>
+                                            <a href='#contactus' style="color:white">Contact</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container-contact100">
+
+
+        <div class="wrap-contact100" style="margin-top:70px">
+			<span class="contact100-form-symbol">
+				<img src="images/icons/symbol-01.png" alt="SYMBOL-MAIL"/>
+			</span>
+
+            <h:form id="contactUsForm" class="contact100-form validate-form flex-sb flex-w">
+                <h:panelGroup layout="block" rendered="#{not empty contactUsForm.status}">
+                    <div class="row">
+                        <div class="col-md-6">
+                            Status:
+                            <strong>
+                                <h:outputLabel value="#{contactUsForm.status}"/>
+                            </strong>
+                        </div>
+                    </div>
+
+                    <br/>
+
+                </h:panelGroup>
+                <span class="contact100-form-title">
+					Drop Us A Message
+				</span>
+
+                <div class="wrap-input100 rs1 validate-input" data-validate="Name is required">
+
+                    <h:inputText id="username" class="input100 name"
+                                 value="#{contactUsForm.username}"/>
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 rs1 validate-input" data-validate="Email is required: e@a.z">
+
+                    <h:inputText id="senderEmail" class="input100 email" placeholder="Email Address"
+                                 value="#{contactUsForm.senderEmail}"/>
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate="Message is required">
+                    <h:inputText id="msg" class="input100 message" placeholder="Enter message"
+                                 value="#{contactUsForm.msg}"/>
+                    <!--                    <textarea class="input100" name="message" placeholder="Write Us A Message"></textarea>-->
+                    <!--                    <span class="focus-input100"></span>-->
+                </div>
+
+                <div class="container-contact100-form-btn">
+
+                    <h:commandButton type="submit" value="Send" class="contact100-form-btn"
+                                     action="#{contactUsAction.saveMsg}"/>
+                </div>
+            </h:form>
+        </div>
+    </div>
+
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+
+    <script src="vendor/animsition/js/animsition.min.js"></script>
+
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="vendor/select2/select2.min.js"></script>
+
+    <script src="vendor/daterangepicker/moment.min.js"></script>
+    <script src="vendor/daterangepicker/daterangepicker.js"></script>
+
+    <script src="vendor/countdowntime/countdowntime.js"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKFWBqlKAGCeS1rMVoaNlwyayu0e0YRes"></script>
+    <script src="js/map-custom.js"></script>
+
+    <script src="js/main.js"></script>
+    <script>
+            $('.email').attr('placeholder', 'Enter full name');
+            $('.name').attr('placeholder', 'Enter email address');
+            $('.message').attr('placeholder', 'Enter message');
+
+
+    </script>
+    <!--    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>-->
+</h:body>
+</html>

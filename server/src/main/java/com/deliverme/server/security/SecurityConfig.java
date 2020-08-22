@@ -21,6 +21,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import static com.deliverme.server.security.SecurityConstants.H2_URL;
 import static com.deliverme.server.security.SecurityConstants.SIGN_UP_URLS;
+import static com.deliverme.server.security.SecurityConstants.DATE_URLS;
 
 
 @Configuration
@@ -90,6 +91,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.js"
                 ).permitAll()
                 .antMatchers(SIGN_UP_URLS).permitAll()
+                .antMatchers(DATE_URLS).permitAll()
                 .antMatchers(H2_URL).permitAll()
                 .anyRequest().authenticated();
 

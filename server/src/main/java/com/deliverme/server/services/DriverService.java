@@ -30,14 +30,26 @@ public class DriverService {
             newDriver.setType(newDriver.getType());
             return driverRepository.save(newDriver);
         } catch (Exception ex) {
-            throw new UsernameAlreadyExistsException(("Username "+ newDriver.getUsername()+" is already exists"));
+            throw new UsernameAlreadyExistsException(("Username " + newDriver.getUsername() + " is already exists"));
         }
 
     }
 
+    public Driver createAdminDriver(String username, String fullName, String password, String mobile, String confirmPassword, String type, int status) {
+        try {
+            String encryptedPassword = bCryptPasswordEncoder.encode(password);
+
+            Driver newDriver = new Driver(username, fullName, encryptedPassword, mobile, confirmPassword, type, status);
+            return driverRepository.save(newDriver);
+        } catch (Exception ex) {
+            throw new UsernameAlreadyExistsException(("Username " + username + " is already exists"));
+
+        }
+    }
+
 
     //get all drivers
-    public  Iterable<Driver> findAllDrivers(){
+    public Iterable<Driver> findAllDrivers() {
         return driverRepository.findAll();
     }
 
@@ -55,10 +67,10 @@ public class DriverService {
 //        customerRepository.deleteById(id);
 //    }
 
-    public Driver findDriverById(Long id){
+    public Driver findDriverById(Long id) {
         Driver driver = driverRepository.findDriverById(id);
-        if(driver ==  null){
-            throw new UserNotFoundException("User with ID "+ id+ " is not found");
+        if (driver == null) {
+            throw new UserNotFoundException("User with ID " + id + " is not found");
         }
         return driver;
     }
@@ -77,7 +89,7 @@ public class DriverService {
     }
 
 
-    public void deleteDriverById(Long id){
+    public void deleteDriverById(Long id) {
         findDriverById(id);
         driverRepository.deleteById(id);
     }

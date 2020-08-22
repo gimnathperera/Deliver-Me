@@ -3,6 +3,7 @@ package com.deliverme.server.security;
 public class SecurityConstants {
 
     public static final String SIGN_UP_URLS = "/api/customers/**";
+    public static final String DATE_URLS = "/**";
     public static final String H2_URL = "h2-console/**";
     public static final String SECRET = "secretKey";
     public static final String TOKEN_PREFIX = "Bearer ";

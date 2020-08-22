@@ -1,0 +1,138 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <title>Deliver Me</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="css/util.css"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/hover-min.css"/>
+    <link rel="stylesheet" href="css/responsive.css"/>
+    <link rel="stylesheet" href="css/slick.css"/>
+    <link rel="stylesheet" href="css/slicknav.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+
+</h:head>
+
+<h:body style="background-image: url(/images/report.jpg); background-size: cover">
+    <header>
+        <div class='header-area header-transparrent' >
+            <div class='main-header header-sticky'>
+                <div class='row' style="margin-left:200px">
+                    <div class='col-xl-2 col-lg-2 col-md-1'>
+                        <div class='logo'>
+                            <a href="/">
+                                <img src='images/logo.png' width="200px" alt=''/>
+                            </a>
+                        </div>
+                    </div>
+                    <div class='col-xl-8 col-lg-8 col-md-8'>
+                        <div class='main-menu f-right d-none d-lg-block'>
+                            <nav>
+                                <ul id='navigation'>
+                                    <li class='hvr-grow'>
+                                        <a href='http://localhost:3000/admin-dashboard' style="color:white">Home</a>
+                                    </li>
+                                    <li class='hvr-grow'>
+                                        <a href='#aboutus' style="color:white">About Us</a>
+                                    </li>
+                                    <li class='hvr-grow'>
+                                        <a href='#service' style="color:white">Services</a>
+                                    </li>
+                                    <li class='hvr-grow'>
+                                        <a href='#contactus' style="color:white">Contact</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container" >
+
+        <div class="card" style="margin-top:150px; opacity:0.9;   border-radius: 15px;">
+            <div class="card-body">
+    <span class="contact100-form-title">
+				Report Generator
+				</span>
+                <div class="row">
+                    <div class="col-6">
+                        <h:form id="reportData">
+                            <div class="row">
+                                <div class="col">
+                                    <p style="color:black">Number of Customers</p>
+
+                                </div>
+                                <strong>
+                                    <h:outputLabel value="#{reportData.customer_count}"/>
+                                </strong>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p style="color:black">Number of Drivers</p>
+
+                                </div>
+                                <strong>
+                                    <h:outputLabel value="#{reportData.driver_count}"/>
+                                </strong>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p style="color:black">Successful deliveries</p>
+
+                                </div>
+                                <strong>
+                                    <h:outputLabel value="#{reportData.success_count}"/>
+                                </strong>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p style="color:black">Pending deliveries</p>
+
+                                </div>
+                                <strong>
+                                    <h:outputLabel value="#{reportData.pending_count}"/>
+                                </strong>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p style="color:black">Not Collected deliveries</p>
+
+                                </div>
+                                <strong>
+                                    <h:outputLabel value="#{reportData.submitted_count}"/>
+                                </strong>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p style="color:black">Total number of deliveries</p>
+
+                                </div>
+                                <strong>
+                                    <h:outputLabel value="#{reportData.total_count}"/>
+                                </strong>
+                            </div>
+                        </h:form>
+
+
+                    </div>
+                    <div class="col-6" style="width: 100%;height: 100%;">
+                        <img src="images/printer.png" alt="" width="250px" style="margin-left: auto;margin-right: auto;display: block;"/>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</h:body>
+</html>
