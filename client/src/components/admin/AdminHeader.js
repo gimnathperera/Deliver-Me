@@ -111,6 +111,7 @@ export class AdminHeader extends Component {
                 <div className='font-weight-bold'>
                   <a
                     href='http://localhost:8080/admin-message.xhtml'
+
                     className='text-truncate'
                     style={{ color: '#5A6069' }}
                   >

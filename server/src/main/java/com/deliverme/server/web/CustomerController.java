@@ -2,7 +2,7 @@ package com.deliverme.server.web;
 
 import com.deliverme.server.domain.Customer;
 import com.deliverme.server.domain.Driver;
-import com.deliverme.server.domain.Parcel;
+
 import com.deliverme.server.services.CustomerService;
 import com.deliverme.server.services.DriverService;
 import org.springframework.beans.factory.annotation.Autowired;

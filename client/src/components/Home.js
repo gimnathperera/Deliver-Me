@@ -463,10 +463,12 @@ export class Home extends Component {
                   </div>
                   <div class='col-xl-5 col-lg-3 col-md-12'>
                     <div class='wantToWork-btn f-right'>
+
                       <a
                         href='http://localhost:8080/contact-us.xhtml'
                         class='btn btn-ans'
                       >
+
                         Contact Us
                       </a>
                     </div>
